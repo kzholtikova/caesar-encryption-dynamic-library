@@ -8,6 +8,7 @@ std::string Encryptor::encrypt(const std::string& rawText, int key) {
     if (key % ALPHABET_SIZE == 0)
         return rawText;
 
+    key = (key % ALPHABET_SIZE + ALPHABET_SIZE);
     std::string encrypted;
     for (int i = 0; i < rawText.length(); i++) {
         char ch = rawText[i];
@@ -23,6 +24,6 @@ std::string Encryptor::encrypt(const std::string& rawText, int key) {
 }
 
 std::string Encryptor::decrypt(const std::string& encryptedText, int key) {
-    std::string decrypted = encrypt(encryptedText, ALPHABET_SIZE - (key % ALPHABET_SIZE));
+    std::string decrypted = encrypt(encryptedText, -key);
     return decrypted;
 }
