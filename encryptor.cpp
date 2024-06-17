@@ -21,3 +21,22 @@ std::string Encryptor::encrypt(const std::string& rawText, int key) {
     }
     return encrypted;
 }
+
+std::string Encryptor::decrypt(const std::string& encryptedText, int key) {
+    if (key % ALPHABET_SIZE == 0)
+        return encryptedText;
+
+    key = key % ALPHABET_SIZE;
+    std::string decrypted;
+    for (int i = 0; i < encryptedText.length(); i++) {
+        char ch = encryptedText[i];
+        if (isalpha(ch)) {
+            int firstAsciiCode = FIRST_LOWER;
+            if (isupper(ch))
+                firstAsciiCode = int(FIRST_UPPER);
+            decrypted += char((int(ch) - firstAsciiCode - key) % ALPHABET_SIZE + firstAsciiCode);
+        } else
+            decrypted += ch;
+    }
+    return decrypted;
+}
