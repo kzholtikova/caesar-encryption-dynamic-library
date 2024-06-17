@@ -1,4 +1,4 @@
-#include "encryptor.h"
+#include "../include/caesar_cipher.h"
 
 int main() {
     std::string rawText;
@@ -9,8 +9,8 @@ int main() {
     std::cout << "Enter the encryption key: ";
     std::cin >> key;
 
-    std::string encryptedText = Encryptor::encrypt(rawText, key);
-    std::string decryptedText = Encryptor::decrypt(encryptedText, key);
+    std::string encryptedText = CaesarCipher::encrypt(rawText, key);
+    std::string decryptedText = CaesarCipher::decrypt(encryptedText, key);
     std::cout << "Raw: " << rawText << "    " << "Key: " << key
               << "\nEncrypted: " << encryptedText << "    Decrypted: " << decryptedText << "\n";
 

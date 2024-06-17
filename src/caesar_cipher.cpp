@@ -1,10 +1,10 @@
 #include <iostream>
-#include "encryptor.h"
+#include "../include/caesar_cipher.h"
 #define ALPHABET_SIZE 26
 #define FIRST_LOWER 'a'
 #define FIRST_UPPER 'A'
 
-std::string Encryptor::encrypt(const std::string& rawText, int key) {
+std::string CaesarCipher::encrypt(const std::string& rawText, int key) {
     if (key % ALPHABET_SIZE == 0)
         return rawText;
 
@@ -23,7 +23,7 @@ std::string Encryptor::encrypt(const std::string& rawText, int key) {
     return encrypted;
 }
 
-std::string Encryptor::decrypt(const std::string& encryptedText, int key) {
+std::string CaesarCipher::decrypt(const std::string& encryptedText, int key) {
     std::string decrypted = encrypt(encryptedText, -key);
     return decrypted;
 }

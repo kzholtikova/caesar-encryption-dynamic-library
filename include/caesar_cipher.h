@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-class Encryptor {
+class CaesarCipher {
 public:
 
     static std::string encrypt(const std::string& rawText, int key);
